@@ -73,7 +73,7 @@ export class ExpressAdapter extends HttpProvider<Router> {
         if (!result)
             return this.handleError(internalServerError, res)
 
-        switch (result.contentType) {
+        switch (result.contentType ?? 'json') {
             case 'json':
                 this.jsonResponse(result.statusCode ?? 200, result.body, res)
         }
